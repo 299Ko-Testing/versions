@@ -161,5 +161,6 @@ timer(wholeTime);
 
 </script>
 ';
-
+ob_flush();
+flush();
 return true;
