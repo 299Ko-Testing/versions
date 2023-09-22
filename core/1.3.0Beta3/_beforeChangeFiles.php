@@ -13,6 +13,8 @@ if ($errorPHP) {
 }
 logg("End of _beforeChangeFiles", "INFO");
 
+$url = util::urlBuild("", true);
+
 echo <<<EOF
 <div class="container">
   <div class="center">
@@ -29,18 +31,20 @@ echo <<<EOF
         </g>
       </svg>
     </div>
-    <div class="controlls">
-      <div class="display-remain-time">10:00</div>
-    </div>
-    <div class="upd">
-      <h1>1.3.0</h1>
-      <p>
-        La mise à jour est en cours. Veuillez ne pas recharger la page pendant l'exécution du script. Vous serez automatiquement redirigé à la fin de la mise à jour.
-      </p>
-    </div>
+  <div class="controlls">
+    <div class="display-remain-time">10:00</div>
+  </div>
+  <div class="upd">
+    <h1>1.3.0</h1>
+    <p>
+      La mise à jour est en cours. Une fois le compte à rebours arrivé à 0, un lien s'affichera pour vous rediriger vers l'administration de votre site.
+    </p>
+  <p id="upd-p-hidden"><a href="{$url}">Cliquez ici pour rejoindre l'administration de votre site</a></p>
   </div>
 </div>
+</div>
 <style>
+#upd-p-hidden {display:none;}
 .container {
     background: url("https://picsum.photos/id/327/1920/1080") no-repeat center;
     background-size: cover;
@@ -139,8 +143,7 @@ function timer(seconds) {
   intervalTimer = setInterval(function () {
     timeLeft = Math.round((remainTime - Date.now()) / 1000);
     if (timeLeft < 0) {
-      clearInterval(intervalTimer);
-      displayTimeLeft(wholeTime);
+      document.getElementById("upd-p-hidden").style.display = "block";
       return;
     }
     displayTimeLeft(timeLeft);
