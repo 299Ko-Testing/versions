@@ -109,6 +109,8 @@ let indicator = document.getElementById("e-indicator");
 let pointer = document.getElementById("e-pointer");
 let length = Math.PI * 2 * 100;
 progressBar.style.strokeDasharray = length;
+EOF;
+echo '
 function update(value, timePercent) {
   var offset = -length - (length * value) / timePercent;
   progressBar.style.strokeDashoffset = offset;
@@ -158,6 +160,6 @@ function displayTimeLeft(timeLeft) {
 timer(wholeTime);
 
 </script>
-EOF;
+';
 
 return true;
