@@ -34,6 +34,12 @@ foreach ($result as $r) {
     $line = explode("\t", $r);
     if (count($line) === 2) {
         $json[$line[0]][] = $line[1];
+    } elseif (count($line) === 3) {
+        if (substr($line[0],0,1) === "R") {
+            // Rename detected
+            $json["D"][] = $line[1];
+            $json["A"][] = $line[2];
+        }
     }
 }
 
