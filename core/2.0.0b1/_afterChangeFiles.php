@@ -25,9 +25,10 @@ util::writeJsonFile(DATA . 'config.json', $config);
 
 logg("Modif Blog comments", "INFO");
 $newsManager = new newsManager();
-$datas = util::scanDir(DATA_PLUGIN . 'blog/comments');
+$datas = util::scanDir(DATA_PLUGIN . 'blog/comments/');
 foreach ($datas['file'] as $file) {
-    $comments = util::readJsonFile($file);
+    logg("Read & export comments from $file", "INFO");
+    $comments = util::readJsonFile(DATA_PLUGIN . 'blog/comments/' . $file);
     if (!empty($comments)) {
         foreach ($comments as $comm) {
             $idNews = $comm['idNews'];
