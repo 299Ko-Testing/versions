@@ -9,6 +9,7 @@ $pwd = core::getInstance()->getConfigVal('adminPwd');
 $token = $_SESSION['adminToken'];
 
 $users = [ 1 => [
+    'id'=> 1,
     'email' => $mail,
 	'token' => $token,
 	'pwd' => $pwd]
