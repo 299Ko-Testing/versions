@@ -15,7 +15,7 @@ $users = [ 1 => [
 ];
 
 logg("Create Admin User", "INFO");
-util::writeJsonFile(DATA . 'users/users.json', $users);
+util::writeJsonFile(DATA_PLUGIN . 'users/users.json', $users);
 $config = util::readJsonFile(DATA . 'config.json');
 unset($config['adminEmail']);
 unset($config['adminPwd']);
@@ -24,7 +24,7 @@ util::writeJsonFile(DATA . 'config.json', $config);
 
 logg("Modif Blog comments", "INFO");
 $newsManager = new newsManager();
-$datas = util::scanDir(DATA . 'blog/comments');
+$datas = util::scanDir(DATA_PLUGIN . 'blog/comments');
 foreach ($datas['file'] as $file) {
     $comments = util::readJsonFile($file);
     if (!empty($comments)) {
