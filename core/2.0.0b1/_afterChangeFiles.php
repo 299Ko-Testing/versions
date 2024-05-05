@@ -5,7 +5,7 @@ logg("Began of _afterChangeFiles", "INFO");
 pluginsManager::getInstance()->installPlugin('users', true);
 
 $mail = core::getInstance()->getConfigVal('adminEmail');
-$pwd = core::getInstance()->getConfigVal('adminEmail');
+$pwd = core::getInstance()->getConfigVal('adminPwd');
 $token = $_SESSION['adminToken'];
 
 $users = [ 1 => [
